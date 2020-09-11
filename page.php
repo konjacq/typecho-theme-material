@@ -93,11 +93,6 @@
                                 <?php lang("share.toTwitter") ?>
                                 </li>
                             </a>
-                            <a class="md-menu-list-a" href="http://service.weibo.com/share/share.php?appkey=&title=<?php $this->title(); ?>&url=<?php $this->permalink(); ?>&pic=&searchPic=false&style=simple ">
-                                <li class="mdl-menu__item">
-                                <?php lang("share.toWeibo") ?>
-                                </li>
-                            </a>
                         </ul>
                     </div>
 
@@ -117,16 +112,6 @@
                 </div>
 
                 <!-- theNext thePrev button -->
-                <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
-                    <?php $this->theNext('%s', null, array('title' => '
-                        <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
-                            <i class="material-icons">arrow_back</i>
-                        </button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Newer', 'tagClass' => 'prev-content')); ?>
-                    <div class="section-spacer"></div>
-                    <?php $this->thePrev('%s', null, array('title' => 'Older&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
-                            <i class="material-icons">arrow_forward</i>
-                        </button>', 'tagClass' => 'prev-content')); ?>
-                </nav>
             </div>
 
             <?php include('sidebar.php'); ?>

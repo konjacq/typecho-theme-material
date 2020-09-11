@@ -135,7 +135,7 @@
     var agent = navigator.userAgent.toLowerCase();
     if(agent.indexOf('ucbrowser')>0) {
         document.write('<link rel="stylesheet" href="<?php getThemeFile('css/uc.css', true); ?>">');
-        alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+        alert('由于 UC 浏览器使用极旧的内核,而本网站使用了一些新的特性\n为了您能更好的浏览,推荐使用 Google Chrome 或 Microsoft Edge 浏览器');
     }
 </script>
 
@@ -263,6 +263,22 @@
         })()
     </script>
 <?php endif ?>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        extensions: ["tex2jax.js"],
+        jax: ["input/TeX","output/HTML-CSS"],
+        tex2jax: {
+            inlineMath: [["$", "$"]],
+            displayMath: [["$$","$$"]],
+            processEscapes: true
+    },
+    "HTML-CSS": { availableFonts: ["TeX"] }
+  });
+</script>
+<script type="text/javascript"
+   src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
 
 <?php $this->footer(); ?>
 

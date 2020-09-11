@@ -1,4 +1,10 @@
 <?php $this->comments()->to($comments); ?>
+<?php function hitokoto() {
+    $file=file("http://39.107.58.77/hitokoto/hitokoto.txt");
+    $arr=mt_rand(0,count($file)-1);
+    echo trim($file[$arr]);
+}
+?>
 <?php function threadedComments($comments, $options)
 {
     $commentClass = '';
@@ -43,19 +49,6 @@
             <i class="material-icons" role="presentation">forum</i>
             <span class="visuallyhidden">reply comment</span>
             </button>'); ?>
-            <!-- share -->
-            <button id="comment-share-<?php $comments->theId(); ?>-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
-                <i class="material-icons" role="presentation">share</i>
-                <span class="visuallyhidden">share comment</span>
-            </button>
-            <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="comment-share-<?php $comments->theId(); ?>-button">
-                <a class="md-menu-list-a" target="view_window" href="<?php $comments->permalink(); ?>">
-                    <li class="mdl-menu__item">在新标签页中打开</li>
-                </a>
-                <a class="md-menu-list-a" href="https://twitter.com/intent/tweet?text=<?php echo htmlspecialchars($comments->content); ?>+from&url=<?php $comments->permalink(); ?>">
-                    <li class="mdl-menu__item">分享到 Twitter</li>
-                </a>
-            </ul>
         </nav>
 
         <!-- Comment answers -->
@@ -136,9 +129,9 @@
                                 <!--  placeholder="http://"-->
                                 <label for="url" class="mdl-textfield__label">
                                     <?php if (getThemeOptions("language") === "zh-CN"): ?>
-                                    网站*
+                                    网站
                                     <?php else: ?>
-                                    Website*
+                                    Website
                                     <?php endif; ?>
                                 </label>
                             </div>
@@ -147,7 +140,7 @@
 
                     <!-- Input comment content -->
                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="comment-input-div">
-                        <textarea name="text" rows="<?php $this->options->CommentRows() ?>" id="comment" class="mdl-textfield__input"></textarea>
+                        <textarea name="text" rows="<?php $this->options->CommentRows() ?>" id="comment" class="mdl-textfield__input OwO-textarea" style="color:#5F5F5F;"></textarea>
                         <label for="comment" class="mdl-textfield__label">
                             <?php if (getThemeOptions("language") === "zh-CN"): ?>
                             加入讨论吧...
@@ -158,6 +151,22 @@
                     </div>
 
                     <!-- Submit comment content button -->
+                    <link rel="stylesheet" href="http://39.107.58.77/source/owo/OwO.min.css">
+                    <script src="http://39.107.58.77/source/owo/OwO.min.js"></script>
+                    <p id="owo-button" class="mdl-button mdl-button--icon OwO"><span class="visuallyhidden">owo</span></p></a>
+                    <script>
+                        var OwO_demo = new OwO({
+                            logo: '',
+                            container: document.getElementsByClassName('OwO')[0],
+                            target: document.getElementsByClassName('OwO-textarea')[0],
+                            api: 'http://39.107.58.77/source/owo/OwO.json',
+                            position: 'down',
+                            width: '100%',
+                            maxHeight: '250px'
+                        });
+                    </script>
+                    <a onclick="document.getElementById('comment').value+='「<?php hitokoto() ?>」'">
+                    <p id="mo-ha-button" class="mdl-button mdl-button--icon">蛤<span class="visuallyhidden">mo-ha</span></p></a>
                     <?php $comments->reply('
                     <button id="comment-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
                         <i class="material-icons" role="presentation">check</i><span class="visuallyhidden">add comment</span>
@@ -168,9 +177,9 @@
 
             <?php $comments->listComments(); ?>
             <?php if (getThemeOptions("language") === "zh-CN"): ?>
-            <?php $comments->pageNav('&laquo; 前一页', '后一页 &raquo;'); ?>
+            <?php $comments->pageNav('&laquo; 上一页', '下一页 &raquo;'); ?>
             <?php else: ?>
-            <?php $comments->pageNav('&laquo; Previous', 'Next &raquo;'); ?>
+            <?php $comments->pageNav('&laquo; Prev', 'Next &raquo;'); ?>
             <?php endif; ?>
 
         <?php else: ?>

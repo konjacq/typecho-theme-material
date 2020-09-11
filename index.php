@@ -38,20 +38,6 @@ $this->need('header.php'); ?>
                                     href="<?php $this->options->dailypicLink() ?>"><?php $this->options->slogan() ?></a>
                         </p>
                     </div>
-
-                    <div class="mdl-card__supporting-text meta mdl-color-text--grey-600">
-                        <!-- Author avatar -->
-                        <div id="author-avatar">
-                            <?php if (!empty($this->options->avatarURL)): ?>
-                                <img src="<?php $this->options->avatarURL() ?>" width="32px" height="32px"/>
-                            <?php else: ?>
-                                <?php $this->author->gravatar(32); ?>
-                            <?php endif; ?>
-                        </div>
-                        <div>
-                            <strong><?php $this->author(); ?></strong>
-                        </div>
-                    </div>
                 </div>
 
                 <!-- Blog info -->
@@ -160,12 +146,6 @@ $this->need('header.php'); ?>
                                     <?php lang("share.toTwitter") ?>
                                 </li>
                             </a>
-                            <a class="index_share-link"
-                               href="http://service.weibo.com/share/share.php?appkey=&title=<?php $this->options->title(); ?>&url=<?php $this->options->siteUrl(); ?>&pic=&searchPic=false&style=simple ">
-                                <li class="mdl-menu__item">
-                                    <?php lang("share.toWeibo") ?>
-                                </li>
-                            </a>
                         </ul>
                     </div>
                 </div>
@@ -214,28 +194,8 @@ $this->need('header.php'); ?>
 
                             <!-- Article info-->
                             <div id="post_entry-info">
-                                <div class="mdl-card__supporting-text meta mdl-color-text--grey-600 "
-                                     id="post_entry-left-info">
-                                    <!-- Author avatar -->
-                                    <div id="author-avatar">
-                                        <?php if (!empty($this->options->avatarURL)): ?>
-                                            <img src="<?php $this->options->avatarURL() ?>" width="44px" height="44px"/>
-                                        <?php else: ?>
-                                            <?php $this->author->gravatar(44); ?>
-                                        <?php endif; ?>
-                                    </div>
-                                    <div>
-                                        <span class="author-name-span"><strong><?php $this->author(); ?></strong></span>
-                                        <span>
-                                        <?php if ($this->options->langis == '0'): ?>
-                                            <?php $this->date('F j, Y'); ?>
-                                        <?php else: ?>
-                                            <?php $this->dateWord(); ?>
-                                        <?php endif; ?>
-                                    </span>
-                                    </div>
-                                </div>
                                 <div id="post_entry-right-info" style="color:<?php $this->options->alinkcolor(); ?>">
+                                    <?php $this->date('M dS, Y'); ?> |
                                     <span class="post_entry-category">
                                         <?php $this->category(', '); ?><?php if ($this->options->commentis == '0' || (!getThemeOptions('SwitchToDisqusSince') == '' || !getThemeOptions('SwitchToDisqusSince') == null) && $this->cid < (int)getThemeOptions('SwitchToDisqusSince')): ?> |
                                     </span>

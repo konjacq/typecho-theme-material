@@ -23,26 +23,10 @@
 
                     <!-- Article info -->
                     <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
-                        <!-- Author avatar -->
-                        <div id="author-avatar">
-                            <?php if (!empty($this->options->avatarURL)): ?>
-                                <img src="<?php $this->options->avatarURL() ?>" width="44px" height="44px" alt="Author Avatar">
-                            <?php else: ?>
-                                <?php $this->author->gravatar(44); ?>
-                            <?php endif; ?>
-                        </div>
 
                         <div>
-                            <!-- Author name -->
-                            <strong><?php $this->author(); ?></strong>
                             <!-- Articel date -->
-                            <span>
-                            <?php if ($this->options->language != 'zh-CN'): ?>
-                                <?php $this->date('F j, Y'); ?>
-                            <?php else: ?>
-                                <?php $this->dateWord(); ?>
-                            <?php endif; ?>
-                        </span>
+                        <span><?php $this->date('M dS, Y'); ?></span>
                         </div>
                         <div class="section-spacer"></div>
                         <?php if (getThemeOptions("qrcode") != "false"): ?>
@@ -93,11 +77,6 @@
                                 <?php lang("share.toTwitter") ?>
                                 </li>
                             </a>
-                            <a class="md-menu-list-a" href="http://service.weibo.com/share/share.php?appkey=&title=<?php $this->title(); ?>&url=<?php $this->permalink(); ?>&pic=&searchPic=false&style=simple ">
-                                <li class="mdl-menu__item">
-                                <?php lang("share.toWeibo") ?>
-                                </li>
-                            </a>
                         </ul>
                     </div>
 
@@ -113,8 +92,7 @@
                         <?php if (!empty($this->options->post_license)): ?>
                             <blockquote style="margin: 2em 0 0;padding: 0.5em 1em;border-left: 3px solid #F44336;background-color: #F5F5F5;list-style: none;">
                                 <p>
-                                    <strong><?php lang("post.permalink"); echo "<a href=\"" . $this->permalink . "\">" . $this->permalink . "</a>" ;?></strong><br>
-                                    <strong><?php $this->options->post_license(); ?></strong>
+                                    <?php $this->options->post_license(); ?>
                                 </p>
                             </blockquote>
                         <?php endif;?>

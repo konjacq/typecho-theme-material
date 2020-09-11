@@ -212,7 +212,7 @@ function showThumbnail($widget)
 
     //If article no include picture, display random default picture
     $result = randomThumbnail();
-
+/*
     $attach = $widget->attachments(1)->attachment;
     if (isset($attach) && $attach->isImage) {
         $result = $attach->url;
@@ -230,7 +230,7 @@ function showThumbnail($widget)
             }
         }
     }
-
+*/
     return $result;
 }
 

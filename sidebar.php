@@ -17,18 +17,6 @@
                 <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
                     <i class="material-icons">clear_all</i>
                 </button>
-                <!-- Sidebar brand image -->
-                <div class="sidebar-image">
-                    <?php if (!empty($this->options->avatarURL)): ?>
-                        <img src="<?php $this->options->avatarURL() ?>">
-                    <?php else: ?>
-                        <?php if (!empty($this->options->logo)): ?>
-                            <img src="<?php $this->options->logo() ?>">
-                        <?php else: ?>
-                            <img src="<?php getThemeFile('img/avatar.png', true) ?>">
-                        <?php endif; ?>
-                    <?php endif; ?>
-                </div>
 
                 <!-- Sidebar brand name -->
                 <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
@@ -82,82 +70,23 @@
                     </a>
                 </li>
 
-                <!-- Archives  -->
-                <li class="dropdown">
-                    <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
-                        <i class="material-icons sidebar-material-icons">inbox</i>
-                        <?php lang("sidebar.archive") ?>
-                        <b class="caret"></b>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <?php $this->widget('Widget_Contents_Post_Date', 'type=month&format=F Y')
-                            ->parse('
-                <li>
-                    <a href="{permalink}" tabindex="-1">
-                        {date}
-                        <span class="sidebar_archives-count">{count}</span>
-                    </a>
-                </li>
-                '); ?>
-                    </ul>
-                </li>
-
-                <!-- categories -->
-                <li class="dropdown">
-                    <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
-                        <i class="material-icons sidebar-material-icons">apps</i>
-                        <?php lang("title.category") ?>
-                        <b class="caret"></b>
-                    </a>
-                    <ul class="dropdown-menu" for="show-category-button">
-                        <?php $this->widget('Widget_Metas_Category_List')->to($category); ?>
-                        <?php while ($category->next()): ?>
-                            <li>
-                                <a href="<?php $category->permalink(); ?>" title="<?php $category->name(); ?>">
-                                    <?php $category->name(); ?>
-                                </a>
-                            </li>
-                        <?php endwhile; ?>
-                    </ul>
-                </li>
-
                 <!-- divider -->
                 <li class="divider"></li>
-                <!-- Pages  -->
-                <?php $this->widget('Widget_Contents_Page_List')->to($pages); ?>
-                <?php while ($pages->next()): ?>
-                    <li>
-                        <a href="<?php $pages->permalink(); ?>" title="<?php $pages->title(); ?>" tabindex="-1">
-                            <?php $pages->title(); ?>
-                        </a>
-                    </li>
-                <?php endwhile; ?>
-
-                <?php if (!defined('__TYPECHO_ROOT_DIR__')) {
-                    exit;
-                }
-                Typecho_Widget::widget('Widget_Stat')->to($stat);
-                ?>
 
                 <!-- Article Numebr  -->
                 <li>
-                    <a href="#">
-                        <?php lang("sidebar.article_num") ?>
-                        <span class="sidebar-badge"><?php echo $stat->publishedPostsNum;?></span>
-                    </a>
+                    <a href="http://39.107.58.77/welcome.html">关于</a>
+                </li>
+                <li>
+                    <a href="http://39.107.58.77/links.html">友链</a>
+                </li>
+                <li>
+                    <a href="http://39.107.58.77/archive.html">归档</a>
+                </li>
+                <li>
+                    <a href="http://39.107.58.77/malody.html">Malody 自制谱下载</a>
                 </li>
             </ul>
-
-            <!-- Sidebar Footer -->
-            <div class="sidebar-divider"></div>
-
-            <!-- Sidebar bottom text -->
-            <a href="https://github.com/idawnlight/typecho-theme-material" target="_blank" class="sidebar-footer-text-a">
-                <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
-                    <?php lang("misc.theme") ?> - Material
-                    <span class="sidebar-badge badge-circle">i</span>
-                </div>
-            </a>
 
             <?php if (!empty($this->options->switch) && in_array('ShowPixiv', $this->options->switch)) : ?>
             <div>
